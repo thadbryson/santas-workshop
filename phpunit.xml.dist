@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<phpunit backupGlobals="false"
+         backupStaticAttributes="false"
+         colors="true"
+         convertErrorsToExceptions="true"
+         convertNoticesToExceptions="true"
+         convertWarningsToExceptions="true"
+         processIsolation="false"
+         stopOnFailure="false"
+         syntaxCheck="false"
+         bootstrap="./src/bootstrap.inc.php">
+
+    <testsuites>
+        <testsuite name="SantasWorkshop Component Test Suite">
+            <directory>./src/SantasWorkshop/Tests</directory>
+            <directory>./src/Symfony/Component/ClassLoader/Tests</directory>
+            <directory>./src/Symfony/Component/Console/Tests</directory>
+            <directory>./src/Symfony/Component/DependencyInjection/Tests</directory>
+            <directory>./src/Symfony/Component/Finder/Tests</directory>
+            <directory>./src/Symfony/Component/Process/Tests</directory>
+            <directory>./src/Symfony/Component/Twig/test/Twig/Tests</directory>
+            <directory>./src/Symfony/Component/Yaml/Tests</directory>
+        </testsuite>
+    </testsuites>
+
+    <filter>
+        <whitelist>
+            <directory>./</directory>
+            <exclude>
+                <directory>./gifts</directory>
+                <directory>./src/Symfony</directory>
+                <directory>./templates</directory>
+                <directory>./workbench.php</directory>
+            </exclude>
+        </whitelist>
+    </filter>
+</phpunit>
