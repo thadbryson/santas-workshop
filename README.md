@@ -10,7 +10,7 @@ It can create any type of code or file. Santa's Workshop uses the Twig format.
 
 Requirements
 
-PHP 5.3.3+
+PHP 5.3.3 or higher
 ----------------------------------------------------------------------------------------------------
 
 Structure
