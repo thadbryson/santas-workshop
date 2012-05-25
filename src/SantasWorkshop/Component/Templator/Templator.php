@@ -78,7 +78,7 @@ class Templator
 
             while ($token) {
                 if ($token->getType() === \Twig_Token::NAME_TYPE) {
-                    $vars[ $token->getValue() ] = '';
+                    $vars[ $token->getValue() ] = '{{ ' . $token->getValue() . ' }}';
                 }
 
                 try {
@@ -89,6 +89,9 @@ class Templator
                 }
             }
         }
+
+        // Sort variables by keys. Don't include in return - it would return status of ksort(), not the $vars.
+        ksort($vars);
 
         return $vars;
     }
