@@ -1,4 +1,3 @@
-
 Santa's Workshop
 ================
 
@@ -14,26 +13,20 @@ Workshop uses the Twig format.
 
 Requirements
 ------------
-PHP 5.3.3 or higher
-PHPUnit for unit testing (optional)
+- PHP 5.3.3 or higher
+- PHPUnit for unit testing (optional)
 
 
 Structure
 ---------
-/gifts - Where the created code will reside.
-
-/gifts/(template_name) - Where each built gift for a template will reside.
+- /gifts - Where the created code will reside.
+- /gifts/(template_name) - Where each built gift for a template will reside.
 They will be timestamped.
-
-/src - The source code of the Workshop.
-
-/templates - Where the templates for the gifts go.
-
-/templates/(template_name) - The template code and configs.
-
-/templates/(template_name)/code - The code for the template.
-
-/templates/(template_name)/config - The config files for templates. It has
+- /src - The source code of the Workshop.
+- /templates - Where the templates for the gifts go.
+- /templates/(template_name) - The template code and configs.
+- /templates/(template_name)/code - The code for the template.
+- /templates/(template_name)/config - The config files for templates. It has
 the variables that will be for the created gift.
 
 
@@ -45,10 +38,10 @@ How to Use
 
 That will list commands you can use. There are 4 with the Workshop.
 
-templates:create            - Creates a new template.
-templates:create-config     - Creates a config file for a template.
-templates:build             - Builds the code from the template.
-templates:list              - Lists all available templates.
+- templates:create            - Creates a new template.
+- templates:create-config     - Creates a config file for a template.
+- templates:build             - Builds the code from the template.
+- templates:list              - Lists all available templates.
 
 If you run a command (Ex: $ php workbench.php templates:create) it will
 show you the arguments for the command.
@@ -59,16 +52,19 @@ Special Thanks
 Sensio Labs for creating the Symfony 2 Components we use in Santa's
 Workshop. The components we use are:
 
-Class Loader
-Console
-Dependency Injection
-Finder
-Process
-Yaml
+- Class Loader
+- Console
+- Dependency Injection
+- Finder
+- Process
+- Yaml
+- http://symfony.com/doc/current/components/index.html
 
 We also use Twig as the template engine. Twig is maintained by Sensio Labs.
+http://twig.sensiolabs.org/
 
 PHP is our language of choice.
+http://www.php.net
 
 PHPUnit is the unit testing framework.
-
+http://www.phpunit.de/manual/current/en/
