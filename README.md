@@ -2,6 +2,9 @@
 Santa's Workshop
 ================
 
+[![Build Status](https://secure.travis-ci.org/thadbryson/santas-workshop.png)](http://travis-ci.org/thadbryson/santas-workshop)
+
+
 About
 -----
 Santa's Workshop is a tool for creating gifts. Gifts of code. It generates
