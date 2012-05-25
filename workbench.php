@@ -28,9 +28,8 @@ use SantasWorkshop\Component\Command\Template\TemplateListCommand;
 use SantasWorkshop\Component\Command\Template\TemplateBuildCommand;
 
 
-
 // Setup Console.
-$app = new Application("Santa's Workshop", '1.0.0');
+$app = new Application("Santa's Workshop", '1.0.0-DEV');
 
 // Add the commands to the Console.
 $app->addCommands(array(
