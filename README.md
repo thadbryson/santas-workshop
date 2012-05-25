@@ -11,13 +11,13 @@ Santa's Workshop is a tool for creating gifts. Gifts of code. It generates
 code from templates. It can create any type of code or file. Santa's
 Workshop uses the Twig format.
 
----------------------------------------------------------------------------
+
 Requirements
 ------------
 PHP 5.3.3 or higher
 PHPUnit for unit testing (optional)
 
----------------------------------------------------------------------------
+
 Structure
 ---------
 /gifts - Where the created code will reside.
@@ -36,7 +36,7 @@ They will be timestamped.
 /templates/(template_name)/config - The config files for templates. It has
 the variables that will be for the created gift.
 
----------------------------------------------------------------------------
+
 How to Use
 ----------
 1. Open a command prompt.
@@ -53,7 +53,7 @@ templates:list              - Lists all available templates.
 If you run a command (Ex: $ php workbench.php templates:create) it will
 show you the arguments for the command.
 
----------------------------------------------------------------------------
+
 Special Thanks
 --------------
 Sensio Labs for creating the Symfony 2 Components we use in Santa's
