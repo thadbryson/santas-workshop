@@ -10,7 +10,7 @@
  */
 
 /**
- *
+ * Bootstrap. Initializes class loader and dependency injection container.
  *
  * @package Santa's Workshop
  * @author  Thad Bryson <thadbry@gmail.com>

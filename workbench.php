@@ -10,7 +10,7 @@
  */
 
 /**
- * Workbench console.
+ * Workbench console. Command-line interface for Workshop.
  *
  * @package Santa's Workshop
  * @author  Thad Bryson <thadbry@gmail.com>
