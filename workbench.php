@@ -34,12 +34,11 @@ $app = new Application("Santa's Workshop", '1.0.0-DEV');
 // Add the commands to the Console.
 $app->addCommands(array(
     // Template commands.
-    new TemplateBuildCommand($container, 'templates:build'),                    // Create code from a template.
-    new TemplateCreateCommand($container, 'templates:create'),                  // Create a template.
-    new TemplateCreateConfigCommand($container, 'templates:create-config'),     // Create a config file for a template.
-    new TemplateListCommand($container, 'templates:list'),                      // List available templates.
+    new TemplateBuildCommand($container, 			'templates:build'),             // Create code from a template.
+    new TemplateCreateCommand($container, 			'templates:create'),            // Create a template.
+    new TemplateCreateConfigCommand($container, 	'templates:create-config'),     // Create a config file for a template.
+    new TemplateListCommand($container, 			'templates:list'),           	// List available templates.
 ));
 
 // Run the Console.
 $app->run();
-

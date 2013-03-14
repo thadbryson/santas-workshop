@@ -36,10 +36,6 @@ class ProcessHelper
     {
         $process = new Process($command);
         $process->run();
-
-        if (!$process->isSuccessful()) {
-            throw new \RuntimeException($process->getErrorOutput());
-        }
     }
 
 }

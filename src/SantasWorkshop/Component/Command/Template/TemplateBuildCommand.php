@@ -64,6 +64,9 @@ EOF
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
+    	// No time limit - could take a while to copy all the files.
+    	set_time_limit(0);
+
         // Print command title.
         $this->_writeTitle($output, 'Template Build');
 
