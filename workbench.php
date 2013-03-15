@@ -29,7 +29,7 @@ use SantasWorkshop\Component\Command\Template\TemplateBuildCommand;
 
 
 // Setup Console.
-$app = new Application("Santa's Workshop", '1.0.0-DEV');
+$app = new Application("Santa's Workshop", '1.0.0');
 
 // Add the commands to the Console.
 $app->addCommands(array(
