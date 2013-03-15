@@ -13,16 +13,7 @@
 
     <testsuites>
         <testsuite name="SantasWorkshop Test Suite">
-            <directory>./src/Symfony/Component/Yaml/Tests</directory>
             <directory>./src/SantasWorkshop/Tests</directory>
-            <directory>./src/Symfony/Component/ClassLoader/Tests</directory>
-            <directory>./src/Symfony/Component/Console/Tests</directory>
-            <directory>./src/Symfony/Component/DependencyInjection/Tests</directory>
-            <directory>./src/Symfony/Component/Finder/Tests</directory>
-            <directory>./src/Symfony/Component/Process/Tests</directory>
-            <!-- Run Twig tests last. They set the timezone. Some other unit tests. -->
-            <!-- use mktime() and strtotime() and we can't have that changed.       -->
-            <directory>./src/Symfony/Component/Twig/test/Twig/Tests</directory>
         </testsuite>
     </testsuites>
 
