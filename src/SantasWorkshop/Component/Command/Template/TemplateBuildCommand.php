@@ -11,7 +11,7 @@
 
 namespace SantasWorkshop\Component\Command\Template;
 
-use SantasWorkshop\Component\Command\Template\TemplateCommand;
+use SantasWorkshop\Component\Command\SantasWorkshopCommand;
 use SantasWorkshop\Component\Yaml\YamlHelper;
 
 use Symfony\Component\Console\Command\Command;
@@ -30,7 +30,7 @@ use Symfony\Component\Console\Output\OutputInterface;
  * @package Santa's Workshop
  * @author  Thad Bryson <thadbry@gmail.com>
  */
-class TemplateBuildCommand extends TemplateCommand
+class TemplateBuildCommand extends SantasWorkshopCommand
 {
 
 

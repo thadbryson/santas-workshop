@@ -11,7 +11,7 @@
 
 namespace SantasWorkshop\Component\Command\Template;
 
-use SantasWorkshop\Component\Command\Template\TemplateCommand;
+use SantasWorkshop\Component\Command\SantasWorkshopCommand;
 
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
@@ -31,7 +31,7 @@ use Symfony\Component\Finder\Finder;
  * @package Santa's Workshop
  * @author  Thad Bryson <thadbry@gmail.com>
  */
-class TemplateListCommand extends TemplateCommand
+class TemplateListCommand extends SantasWorkshopCommand
 {
 
 
@@ -89,4 +89,5 @@ EOF
 
         $output->writeln('');
     }
+
 }

@@ -20,7 +20,7 @@
 require_once __DIR__ . '/src/bootstrap.inc.php';
 
 
-use Symfony\Component\Console\Application;
+use SantasWorkshop\Component\Application;
 
 use SantasWorkshop\Component\Command\Template\TemplateCreateCommand;
 use SantasWorkshop\Component\Command\Template\TemplateCreateConfigCommand;
@@ -29,7 +29,7 @@ use SantasWorkshop\Component\Command\Template\TemplateBuildCommand;
 
 
 // Setup Console.
-$app = new Application("Santa's Workshop", '1.0.0');
+$app = new Application();
 
 // Add the commands to the Console.
 $app->addCommands(array(
