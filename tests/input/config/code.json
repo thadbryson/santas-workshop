@@ -1,0 +1,10 @@
+{
+    "code": "code",
+    "name": "name",
+    "desc": "desc",
+    "vars": {
+        "var1": "test",
+        "var2": "test2",
+        "var3": "test3"
+    }
+}

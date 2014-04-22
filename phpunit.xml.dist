@@ -1,31 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<phpunit backupGlobals="false"
-         backupStaticAttributes="false"
-         colors="true"
-         convertErrorsToExceptions="true"
-         convertNoticesToExceptions="true"
-         convertWarningsToExceptions="true"
-         processIsolation="false"
-         stopOnFailure="false"
-         syntaxCheck="false"
-         bootstrap="./src/bootstrap.inc.php">
-
-    <testsuites>
-        <testsuite name="SantasWorkshop Test Suite">
-            <directory>./src/SantasWorkshop/Tests</directory>
-        </testsuite>
-    </testsuites>
-
-    <filter>
-        <whitelist>
-            <directory>./</directory>
-            <exclude>
-                <directory>./gifts</directory>
-                <directory>./src/Symfony</directory>
-                <directory>./templates</directory>
-                <directory>./workbench.php</directory>
-            </exclude>
-        </whitelist>
-    </filter>
+<phpunit bootstrap="./tests/bootstrap.php"
+         colors="true">
+  <testsuites>
+    <testsuite>
+      <directory>tests</directory>
+    </testsuite>
+  </testsuites>
+  <filter>
+    <whitelist>
+      <directory suffix=".php">src</directory>
+    </whitelist>
+  </filter>
 </phpunit>

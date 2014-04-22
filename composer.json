@@ -1,0 +1,27 @@
+{
+    "name": "thadbryson/santas-workshop",
+    "description": "Generate code from Twig templates. Or any files for that matter.",
+    "minimum-stability": "stable",
+
+    "authors": [
+        {
+            "name":     "Thad Bryson",
+            "email":    "thadbry@gmail.com",
+            "homepage": "http://thadbryson.co"
+        }
+    ],
+
+    "require": {
+        "symfony/console":  "2.4.*",
+        "symfony/finder":   "2.4.*",
+        "symfony/process":  "2.4.*",
+        "symfony/yaml":     "2.4.*",
+        "twig/twig":        "v1.15.1"
+    },
+
+    "autoload": {
+        "psr-4": {
+            "TCB\\": "src/"
+        }
+    }
+}
