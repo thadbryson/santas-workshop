@@ -36,7 +36,7 @@ class Config
 
         // If there are no vars: add some.
         if (!array_key_exists("vars", $data) || !is_array($data["vars"])) {
-            $data["vars"] = [];
+            $data["vars"] = new stdClass();
         }
 
         return $data;
@@ -55,14 +55,14 @@ class Config
         return $this->data[ $param ];
     }
 
-    public function getInputDir($dir)
+    public function getTemplatesDir($dir)
     {
         $dir = rtrim($dir, "/");
 
-        return Filesystem::filterDir($dir."/".$this->get("code"));
+        return Filesystem::filterDir($dir."/".$this->get("tmpl"));
     }
 
-    public function getOutputDir($dir)
+    public function getGiftsDir($dir)
     {
         $dir = rtrim($dir, "/");
 

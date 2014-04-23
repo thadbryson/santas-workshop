@@ -6,6 +6,6 @@ class Text
 {
     public static function code($text)
     {
-        return preg_replace("/[^A-Za-z0-9 \-]/", '', $text);
+        return preg_replace("/[^A-Za-z0-9 \-_]/", '', $text);
     }
 }

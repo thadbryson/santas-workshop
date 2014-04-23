@@ -1,3 +1,10 @@
 /vendor/
 /composer.lock
+
+cipos/input/configs/*
+cipos/input/templates/*
+tests/input/configs/*
+tests/input/templates/*
+
+cipos/output/gifts/*
 tests/output/gifts/*

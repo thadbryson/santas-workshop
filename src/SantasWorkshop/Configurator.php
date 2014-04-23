@@ -5,12 +5,21 @@ namespace TCB\SantasWorkshop;
 use TCB\SantasWorkshop\AbstractDirectoryAttr;
 use TCB\SantasWorkshop\Config;
 use TCB\SantasWorkshop\Helper\Filesystem;
+use TCB\SantasWorkshop\Helper\Text;
 
 class Configurator extends AbstractDirectoryAttr
 {
-    public function getFile(Config $config)
+    public function getFile($config)
     {
-        return Filesystem::filterFile($config->get("code").".json", $this->getDir());
+        if ($config instanceof Config) {
+            $config = $config->get('code');
+        } elseif (!is_string($config)) {
+            throw new \Exception("Invalid data type given for config.");
+        }
+
+        $code = Text::code($config);
+
+        return Filesystem::filterFile($code.".json", $this->getDir());
     }
 
     public function save($config)

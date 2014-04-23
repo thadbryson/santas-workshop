@@ -12,12 +12,8 @@ class Filesystem
         $dir = rtrim($dir, "/");  // Trim "/" from the end of path. Add another.
 
         // Make sure directory exists.
-        if (!is_dir($dir)) {
-            if ($create) {
-                mkdir($dir);
-            } else {
-                throw new \Exception("Error finding directory: {$dir}.");
-            }
+        if (!is_dir($dir) && $create) {
+            mkdir($dir);
         }
 
         return $dir."/";
@@ -32,11 +28,6 @@ class Filesystem
             $dir = static::filterDir($dir);
 
             $file = $dir.$file;
-        }
-
-        // Make sure directory exists.
-        if (!is_string($file) || !is_file($file)) {
-            throw new \Exception("Error finding file: {$file}.");
         }
 
         return $file;

@@ -10,17 +10,17 @@ use TCB\SantasWorkshop\Helper\Process;
 
 class Giftor extends AbstractDirectoryAttr
 {
-    public function build(Config $config, $input_dir)
+    public function build(Config $config, $templatesDir)
     {
         // Copy raw template.
-        $input_dir  = $config->getInputDir($input_dir);
-        $output_dir = $config->getOutputDir($this->getDir());
+        $templatesDir = $config->getTemplatesDir($templatesDir);
+        $giftsDir     = $config->getGiftsDir($this->getDir());
 
-        Process::execute("cp ./* {$output_dir} -r", $input_dir);
+        Process::execute("cp {$templatesDir}/* {$giftsDir} -r");
 
         $paths = [
-            "twigs"    => Filesystem::getPaths($output_dir, "/\.twig\$/"),
-            "excludes" => Filesystem::getPaths($output_dir, "/\.exclude\$/")
+            "twigs"    => Filesystem::getPaths($giftsDir, "/\.twig\$/"),
+            "excludes" => Filesystem::getPaths($giftsDir, "/\.exclude\$/")
         ];
 
         foreach ($paths["excludes"] as $path) {
@@ -28,11 +28,11 @@ class Giftor extends AbstractDirectoryAttr
         }
 
         // Setup Twig Environment.
-        $loader = new \Twig_Loader_Filesystem($output_dir);
+        $loader = new \Twig_Loader_Filesystem($giftsDir);
         $twig   = new \Twig_Environment($loader);
 
         foreach ($paths["twigs"] as $path) {
-            $tmpl = substr($path, strlen($output_dir));
+            $tmpl = substr($path, strlen($giftsDir));
 
             $template = $twig->loadTemplate($tmpl);                     // Get the template.
             $output   = $template->render($config->get("vars"));        // Get output of template with the variables ($vars).
@@ -42,6 +42,12 @@ class Giftor extends AbstractDirectoryAttr
             Process::rename($path, ".twig");                         // Drop the .twig from the file name.
         }
 
-        return $output_dir;
+        return [
+            "config"        => $config->get("code"),
+            "templatesDir"  => $templatesDir,
+            "giftsDir"      => $giftsDir,
+            "num_twigs"     => count($paths["twigs"]),
+            "num_excludes"  => count($paths["excludes"])
+        ];
     }
 }

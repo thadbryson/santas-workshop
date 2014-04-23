@@ -1,6 +1,6 @@
 {
     "code": "code",
-    "tmpl": "template1",
+    "tmpl": "code",
     "vars": {
         "var1": "test",
         "var2": "test2",

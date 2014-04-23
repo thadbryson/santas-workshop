@@ -41,7 +41,7 @@ class ConfigTest extends \PHPUnit_Framework_TestCase
      */
     public function testCreateConfig()
     {
-        $config = Config::factory(["code" => "code", "tmpl" => "template1", "vars" => $this->vars]);
+        $config = Config::factory(["code" => "code", "tmpl" => "code", "vars" => $this->vars]);
 
         $this->checkConfig($config);
     }
@@ -52,7 +52,7 @@ class ConfigTest extends \PHPUnit_Framework_TestCase
      */
     public function testGetTemplateInfo()
     {
-        $config = Config::factory(["code" => "code", "tmpl" => "template1", "vars" => $this->vars]);
+        $config = Config::factory(["code" => "code", "tmpl" => "code", "vars" => $this->vars]);
 
         $this->configurator->save($config);
 
