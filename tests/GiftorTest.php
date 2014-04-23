@@ -29,7 +29,5 @@ class GiftorTest extends \PHPUnit_Framework_TestCase
         $giftor = new Giftor(__DIR__."/output/gifts");
         $dir = $giftor->build($config, __DIR__."/input/templates");
         $this->checkOuput($dir);
-
-
     }
 }

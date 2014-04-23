@@ -13,9 +13,8 @@ class Giftor extends AbstractDirectoryAttr
     public function build(Config $config, $input_dir)
     {
         // Copy raw template.
-        $input_dir  = $config->getDir($input_dir);
-        $output_dir = $config->getDir($this->getDir());
-        $output_dir = Filesystem::filterDir(rtrim($output_dir, "/")."-".time(), true);
+        $input_dir  = $config->getInputDir($input_dir);
+        $output_dir = $config->getOutputDir($this->getDir());
 
         Process::execute("cp ./* {$output_dir} -r", $input_dir);
 

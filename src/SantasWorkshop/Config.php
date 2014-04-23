@@ -55,11 +55,18 @@ class Config
         return $this->data[ $param ];
     }
 
-    public function getDir($dir)
+    public function getInputDir($dir)
     {
         $dir = rtrim($dir, "/");
 
-        return Filesystem::filterDir($dir."/".$this->get("code"), true);
+        return Filesystem::filterDir($dir."/".$this->get("code"));
+    }
+
+    public function getOutputDir($dir)
+    {
+        $dir = rtrim($dir, "/");
+
+        return Filesystem::filterDir($dir."/".$this->get("code")."-".time(), true);
     }
 
     public static function factory($data)
