@@ -6,14 +6,18 @@ use Symfony\Component\Finder\Finder;
 
 class Filesystem
 {
-    public static function filterDir($dir)
+    public static function filterDir($dir, $create = false)
     {
         $dir = trim($dir);        // Trim all whitespace.
         $dir = rtrim($dir, "/");  // Trim "/" from the end of path. Add another.
 
         // Make sure directory exists.
-        if (!is_string($dir) || !is_dir($dir)) {
-            throw new \Exception("Error finding directory: {$dir}.");
+        if (!is_dir($dir)) {
+            if ($create) {
+                mkdir($dir);
+            } else {
+                throw new \Exception("Error finding directory: {$dir}.");
+            }
         }
 
         return $dir."/";

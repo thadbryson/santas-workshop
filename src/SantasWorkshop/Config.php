@@ -2,51 +2,68 @@
 
 namespace TCB\SantasWorkshop;
 
-use TCB\SantasWorkshop\AbstractDirectoryAttr;
 use TCB\SantasWorkshop\Helper\Filesystem;
+use TCB\SantasWorkshop\Helper\Text;
 
-class Config extends AbstractDirectoryAttr
+class Config
 {
-    public function factory($code, $name = null, $description = null, $vars = null)
+    protected $data = null;
+
+    public function __construct($data = array())
     {
-        $config = [ "code" => preg_replace("/\s+/", "", strtolower($code)) ];     // Make code lowercase and remove all whitespace.
-
-        if (is_string($name)) {
-            $config["name"] = $name;
-        }
-
-        if (is_string($description)) {
-            $config["desc"] = $description;
-        }
-
-        if (is_array($vars)) {
-            $config["vars"] = $vars;
-        }
-
-        return $config;
+        $this->setData($data);
     }
 
-    public function getFile($code)
+    public function setData(array $data)
     {
-        $config = $this->factory($code);
-
-        return Filesystem::filterFile($config["code"].".json", $this->getDir());
-    }
-
-    public function save($config)
-    {
-        // Ouput file to config directory.
-        $file = $this->getFile($config["code"]);
-
-        Filesystem::jsonSave($file, $config);
+        $this->data = $this->filterData($data);
 
         return $this;
     }
 
-    public function read($code)
+    protected function filterData($data)
     {
-        $file = $this->getFile($code);
+        // Check that data has "code" and "tmpl".
+        foreach (["code", "tmpl"] as $param) {
+            if (!array_key_exists($param, $data)) {
+                throw new \Exception("Data is not valid.");
+            }
+        }
 
-        return Filesystem::jsonOpen($file);
+        // Format "code" and "tmpl" into a code type.
+        $data["code"] = Text::code($data["code"]);
+        $data["tmpl"] = Text::code($data["tmpl"]);
+
+        // If there are no vars: add some.
+        if (!array_key_exists("vars", $data) || !is_array($data["vars"])) {
+            $data["vars"] = [];
+        }
+
+        return $data;
+    }
+
+    public function get($param = null)
+    {
+        if ($param === null) {
+            return $this->data;
+        }
+
+        if (!array_key_exists($param, $this->data)) {
+            throw new \Exception("Param {$param} not found in Config.");
+        }
+
+        return $this->data[ $param ];
+    }
+
+    public function getDir($dir)
+    {
+        $dir = rtrim($dir, "/");
+
+        return Filesystem::filterDir($dir."/".$this->get("code"), true);
+    }
+
+    public static function factory($data)
+    {
+        return new Config($data);
     }
 }

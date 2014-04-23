@@ -1,7 +1,6 @@
 {
     "code": "code",
-    "name": "name",
-    "desc": "desc",
+    "tmpl": "template1",
     "vars": {
         "var1": "test",
         "var2": "test2",

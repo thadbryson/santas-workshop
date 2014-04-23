@@ -4,14 +4,6 @@ namespace TCB\SantasWorkshop;
 
 class Builder
 {
-    protected $templator = null;
-    protected $config    = null;
-
-    public function __construct($config)
-    {
-
-    }
-
     /**
      * Setup ouptput directory under /gifts directory.
      */
@@ -31,7 +23,12 @@ class Builder
     /**
      * Rename all *.exclude files. Drop the .exclude.
      */
-    protected function doExcludes()
+    protected function runExcludes()
+    {
+
+    }
+
+    protected function runTwigs()
     {
 
     }
