@@ -42,9 +42,7 @@ class BaseCommand extends Command
     {
         $this->outputTable($output, [
             ["Code",     $config->get("code")],
-            ["Template", $config->get("tmpl")],
-            [""],
-            ["Vars",     var_export($config->get("vars"), true)]
+            ["Template", $config->get("tmpl")]
         ]);
     }
 

@@ -4,50 +4,75 @@ namespace TCB\SantasWorkshop;
 
 use TCB\SantasWorkshop\AbstractDirectoryAttr;
 use TCB\SantasWorkshop\Config;
-use TCB\SantasWorkshop\Templator;
 use TCB\SantasWorkshop\Helper\Filesystem;
 use TCB\SantasWorkshop\Helper\Process;
 
 class Giftor extends AbstractDirectoryAttr
 {
-    public function build(Config $config, $templatesDir)
+    protected function setDirectories($templatesDir)
     {
-        // Copy raw template.
-        $templatesDir = $config->getTemplatesDir($templatesDir);
-        $giftsDir     = $config->getGiftsDir($this->getDir());
+        $this->templatesDir = $this->config->getTemplatesDir($templatesDir);
+        $this->giftsDir     = $this->config->getGiftsDir($this->getDir());
+    }
 
-        Process::execute("cp {$templatesDir}/* {$giftsDir} -r");
+    protected function copyTemplate()
+    {
+        return Process::execute("cp {$this->templatesDir}/* {$this->giftsDir} -r");
+    }
 
-        $paths = [
-            "twigs"    => Filesystem::getPaths($giftsDir, "/\.twig\$/"),
-            "excludes" => Filesystem::getPaths($giftsDir, "/\.exclude\$/")
+    protected function setPaths()
+    {
+        $this->paths = [
+            "twigs"    => Filesystem::getPaths($this->giftsDir, "/\.twig\$/"),
+            "excludes" => Filesystem::getPaths($this->giftsDir, "/\.exclude\$/")
         ];
+    }
 
-        foreach ($paths["excludes"] as $path) {
+    protected function renameExcludes()
+    {
+        foreach ($this->paths["excludes"] as $path) {
             Process::rename($path, ".exclude");
         }
+    }
 
+    protected function runTwig()
+    {
         // Setup Twig Environment.
-        $loader = new \Twig_Loader_Filesystem($giftsDir);
+        $loader = new \Twig_Loader_Filesystem($this->giftsDir);
         $twig   = new \Twig_Environment($loader);
 
-        foreach ($paths["twigs"] as $path) {
-            $tmpl = substr($path, strlen($giftsDir));
+        foreach ($this->paths["twigs"] as $path) {
+            $tmpl = substr($path, strlen($this->giftsDir));
 
-            $template = $twig->loadTemplate($tmpl);                     // Get the template.
-            $output   = $template->render($config->get("vars"));        // Get output of template with the variables ($vars).
+            $template = $twig->loadTemplate($tmpl);                         // Get the template.
+            $output   = $template->render($this->config->get("vars"));      // Get output of template with the variables ($vars).
 
-            file_put_contents($path, $output);                          // Ouptut the contents.
+            file_put_contents($path, $output);                              // Ouptut the contents.
 
-            Process::rename($path, ".twig");                         // Drop the .twig from the file name.
+            Process::rename($path, ".twig");                                // Drop the .twig from the file name.
         }
+    }
 
+    protected function getStats()
+    {
         return [
-            "config"        => $config->get("code"),
-            "templatesDir"  => $templatesDir,
-            "giftsDir"      => $giftsDir,
-            "num_twigs"     => count($paths["twigs"]),
-            "num_excludes"  => count($paths["excludes"])
+            "config"        => $this->config->get("code"),
+            "templatesDir"  => $this->templatesDir,
+            "giftsDir"      => $this->giftsDir,
+            "num_twigs"     => count($this->paths["twigs"]),
+            "num_excludes"  => count($this->paths["excludes"])
         ];
+    }
+
+    public function build(Config $config, $templatesDir)
+    {
+        $this->config = $config;                // Set the Config.
+        $this->setDirectories($templatesDir);   // Set the directories. Templates and Gifts.
+        $this->copyTemplate();                  // Copy template directory to gifts directory.
+        $this->setPaths();                      // Get the paths for the .exclude and .twig files.
+        $this->renameExcludes();                // Drop the .exclude from the excluded files.
+        $this->runTwig();                       // Process the Twig templates.
+
+        return $this->getStats();               // Return the statistics of this build.
     }
 }

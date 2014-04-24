@@ -9,34 +9,28 @@ use TCB\SantasWorkshop\Helper\Text;
 
 class Configurator extends AbstractDirectoryAttr
 {
-    public function getFile($config)
+    protected function getConfigFile($config)
     {
-        if ($config instanceof Config) {
-            $config = $config->get('code');
-        } elseif (!is_string($config)) {
-            throw new \Exception("Invalid data type given for config.");
+        if (!($config instanceof Config)) {
+            $config = Config::factory(["code" => $config, "tmpl" => $config]);
         }
 
-        $code = Text::code($config);
-
-        return Filesystem::filterFile($code.".json", $this->getDir());
+        // Ouput file to config directory.
+        return $config->getFile($this->getDir());
     }
 
-    public function save($config)
+    public function save(Config $config)
     {
-        // Ouput file to config directory.
-        $file = $this->getFile($config);
-
+        $file = $this->getConfigFile($config);
         Filesystem::jsonSave($file, $config->get());
 
-        return $this;
+        return $file;
     }
 
     public function read($config)
     {
-        $file = $this->getFile($config);        // Get the file path.
-        $data = Filesystem::jsonOpen($file);   // Get the file contents.
+        $data = Filesystem::jsonOpen($this->getConfigFile($config));
 
-        return Config::factory($data);          // Return a new Config object.
+        return Config::factory($data);
     }
 }

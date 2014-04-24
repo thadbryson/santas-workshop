@@ -35,7 +35,7 @@ class Filesystem
 
     public static function jsonSave($file, $data)
     {
-        $json = json_encode($data, JSON_PRETTY_PRINT);
+        $json = json_encode($data, JSON_FORCE_OBJECT + JSON_PRETTY_PRINT);
 
         return file_put_contents($file, $json);
     }

@@ -14,11 +14,16 @@ class Config
         $this->setData($data);
     }
 
-    public function setData(array $data)
+    public function setData($data)
     {
         $this->data = $this->filterData($data);
 
         return $this;
+    }
+
+    protected function filterCode($code)
+    {
+        return preg_replace("/[^A-Za-z0-9 \-_]/", '', $code);
     }
 
     protected function filterData($data)
@@ -31,12 +36,12 @@ class Config
         }
 
         // Format "code" and "tmpl" into a code type.
-        $data["code"] = Text::code($data["code"]);
-        $data["tmpl"] = Text::code($data["tmpl"]);
+        $data["code"] = $this->filterCode($data["code"]);
+        $data["tmpl"] = $this->filterCode($data["tmpl"]);
 
         // If there are no vars: add some.
         if (!array_key_exists("vars", $data) || !is_array($data["vars"])) {
-            $data["vars"] = new stdClass();
+            $data["vars"] = [];
         }
 
         return $data;
@@ -53,6 +58,11 @@ class Config
         }
 
         return $this->data[ $param ];
+    }
+
+    public function getFile($dir)
+    {
+        return Filesystem::filterFile($this->get("code").".json", $dir);
     }
 
     public function getTemplatesDir($dir)

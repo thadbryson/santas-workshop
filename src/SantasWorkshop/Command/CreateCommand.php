@@ -26,7 +26,7 @@ class CreateCommand extends BaseCommand
         $this->outputHeader($output, "Create a Config file");
 
         $code = $this->getConfigCode($output);
-        $tmpl = $this->getConfigTmpl($output);
+        $tmpl = $this->ask($output, "What is the template?", $code);
         $dir  = $this->getConfigsDir($output);
 
         $configurator = new Configurator($dir);
