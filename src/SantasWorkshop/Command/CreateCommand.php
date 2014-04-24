@@ -15,17 +15,14 @@ class CreateCommand extends BaseCommand
 {
     protected function configure()
     {
-        $this
-            ->setName("config:create")
-            ->setDescription("Create a config.")
-        ;
+        $this->init("config:create", "Create a config.");
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $this->outputHeader($output, "Create a Config file");
 
-        $code = $this->getConfigCode($output);
+        $code = $this->getConfigCode($input);
         $tmpl = $this->ask($output, "What is the template?", $code);
         $dir  = $this->getConfigsDir($output);
 

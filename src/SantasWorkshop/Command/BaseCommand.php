@@ -10,6 +10,15 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 class BaseCommand extends Command
 {
+    protected function init($name, $description)
+    {
+        $this
+            ->setName($name)
+            ->setDescription($description)
+            ->addArgument('code', InputArgument::REQUIRED, "Config's Code?")
+        ;
+    }
+
     protected function outputHeader(OutputInterface $output, $text)
     {
         $output->writeln("");
@@ -57,9 +66,9 @@ class BaseCommand extends Command
         return $dialog->ask($output, " ".$question." ", $default);
     }
 
-    protected function getConfigCode(OutputInterface $output)
+    protected function getConfigCode(InputInterface $input)
     {
-        return $this->ask($output, "Config code?");
+        return $input->getArgument('code');
     }
 
     protected function getConfigsDir(OutputInterface $output)

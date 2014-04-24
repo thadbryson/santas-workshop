@@ -15,17 +15,14 @@ class BuildCommand extends BaseCommand
 {
     protected function configure()
     {
-        $this
-            ->setName("gift:build")
-            ->setDescription("Build a Gift.")
-        ;
+        $this->init("gift:build", "Build a Gift.");
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $this->outputHeader($output, "Build a new Gift!!!");
 
-        $code = $this->getConfigCode($output);
+        $code = $this->getConfigCode($input);
 
         $configsDir   = $this->getConfigsDir($output);
         $templatesDir = $this->getTemplatesDir($output);
