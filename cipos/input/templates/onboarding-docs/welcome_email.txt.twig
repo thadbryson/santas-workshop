@@ -1,0 +1,22 @@
+
+Hi {{ employee.firstName }},
+
+<p>
+    Welcome to <b>Acme Computers</b>. This is your welcome email with some basic information you'll need.
+</p>
+
+<ul>
+    <li>Start date: {{ employee.startDate }}</li>
+    <li>Hours in your work week: {{ employee.hrs_week }}</li>
+    <li>Rate of pay: {{ employee.rate }}</li>
+    <li>Your manager: {{ employee.manager }}</li>
+</ul>
+
+<p>
+    You have been hired as a <b>{{ employee.role }}</b>. Your duties include {{ employee.duties }}.
+</p>
+
+<p>
+    Thanks,<br>
+    {{ signoff }}
+</p>

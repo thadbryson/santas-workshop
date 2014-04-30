@@ -45,7 +45,7 @@ class Filesystem
         $json = file_get_contents($file);
 
         // Decode into array (true parameter)
-        return json_decode($json, true);
+        return json_decode(trim($json), true);
     }
 
     public static function getPaths($dir, $match)
