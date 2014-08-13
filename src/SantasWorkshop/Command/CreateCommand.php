@@ -27,7 +27,7 @@ class CreateCommand extends BaseCommand
         $dir  = $this->getConfigsDir($output);
 
         $configurator = new Configurator($dir);
-        $config       = Config::factory(["code" => $code, "tmpl" => $tmpl]);
+        $config       = Config::factory(array("code" => $code, "tmpl" => $tmpl));
 
         $configurator->save($config);
 

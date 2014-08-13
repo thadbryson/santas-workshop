@@ -12,7 +12,7 @@ class Configurator extends AbstractDirectoryAttr
     protected function getConfigFile($config)
     {
         if (!($config instanceof Config)) {
-            $config = Config::factory(["code" => $config, "tmpl" => $config]);
+            $config = Config::factory(array("code" => $config, "tmpl" => $config));
         }
 
         // Ouput file to config directory.

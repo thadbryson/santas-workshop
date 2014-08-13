@@ -49,9 +49,9 @@ class BaseCommand extends Command
 
     protected function outputConfig($output, $config)
     {
-        $this->outputTable($output, [
-            ["Code",     $config->get("code")],
-            ["Template", $config->get("tmpl")]
+        $this->outputTable($output, array(
+            array("Code",     $config->get("code")),
+            array("Template", $config->get("tmpl"))
         ]);
     }
 

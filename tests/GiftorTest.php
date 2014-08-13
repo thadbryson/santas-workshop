@@ -35,14 +35,14 @@ class GiftorTest extends \PHPUnit_Framework_TestCase
 
     public function testBuild()
     {
-        $config = Config::factory([
+        $config = Config::factory(array(
             "code" => "code",
             "tmpl" => "code",
-            "vars" => [
+            "vars" => array(
                 "var1" => "text here",
                 "var2" => "more text"
-            ]
-        ]);
+            )
+        ));
 
         $giftor = new Giftor(__DIR__."/output/gifts");
         $stats = $giftor->build($config, __DIR__."/input/templates");

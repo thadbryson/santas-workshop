@@ -34,12 +34,12 @@ class BuildCommand extends BaseCommand
         $giftor = new Giftor($giftsDir);
         $stats  = $giftor->build($config, $templatesDir);
 
-        $this->outputTable($output, [
-            ["Config",          $stats["config"]        ],
-            ["Template Dir",    $stats["templatesDir"]  ],
-            ["Gift Dir",        $stats["giftsDir"]      ],
-            ["# Twigs",         $stats["num_twigs"]     ],
-            ["# Excludes",      $stats["num_excludes"]  ]
-        ]);
+        $this->outputTable($output, array(
+            array("Config",          $stats["config"]        ),
+            array("Template Dir",    $stats["templatesDir"]  ),
+            array("Gift Dir",        $stats["giftsDir"]      ),
+            array("# Twigs",         $stats["num_twigs"]     ),
+            array("# Excludes",      $stats["num_excludes"]  )
+        ));
     }
 }

@@ -50,7 +50,7 @@ class Filesystem
 
     public static function getPaths($dir, $match)
     {
-        $paths = [];
+        $paths = array();
 
         $finder = new Finder();
         $finder->files()            // Find only files.

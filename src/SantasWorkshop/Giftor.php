@@ -22,10 +22,10 @@ class Giftor extends AbstractDirectoryAttr
 
     protected function setPaths()
     {
-        $this->paths = [
+        $this->paths = array(
             "twigs"    => Filesystem::getPaths($this->giftsDir, "/\.twig\$/"),
             "excludes" => Filesystem::getPaths($this->giftsDir, "/\.exclude\$/")
-        ];
+        );
     }
 
     protected function renameExcludes()
@@ -55,13 +55,13 @@ class Giftor extends AbstractDirectoryAttr
 
     protected function getStats()
     {
-        return [
+        return array(
             "config"        => $this->config->get("code"),
             "templatesDir"  => $this->templatesDir,
             "giftsDir"      => $this->giftsDir,
             "num_twigs"     => count($this->paths["twigs"]),
             "num_excludes"  => count($this->paths["excludes"])
-        ];
+        );
     }
 
     public function build(Config $config, $templatesDir)

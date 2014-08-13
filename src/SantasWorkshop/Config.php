@@ -29,7 +29,7 @@ class Config
     protected function filterData($data)
     {
         // Check that data has "code" and "tmpl".
-        foreach (["code", "tmpl"] as $param) {
+        foreach (array("code", "tmpl") as $param) {
             if (!array_key_exists($param, $data)) {
                 throw new \Exception("Data is not valid.");
             }
@@ -41,7 +41,7 @@ class Config
 
         // If there are no vars: add some.
         if (!array_key_exists("vars", $data) || !is_array($data["vars"])) {
-            $data["vars"] = [];
+            $data["vars"] = array();
         }
 
         return $data;
