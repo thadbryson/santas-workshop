@@ -11,8 +11,8 @@ class Giftor extends AbstractDirectoryAttr
 {
     protected function setDirectories($templatesDir)
     {
-        $this->templatesDir = $this->config->getTemplatesDir($templatesDir);
-        $this->giftsDir     = $this->config->getGiftsDir($this->getDir());
+        $this->templatesDir = realpath($this->config->getTemplatesDir($templatesDir));
+        $this->giftsDir     = realpath($this->config->getGiftsDir($this->getDir()));
     }
 
     protected function copyTemplate()

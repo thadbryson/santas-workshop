@@ -9,7 +9,7 @@ class GiftorTest extends \PHPUnit_Framework_TestCase
     {
         $this->assertEquals("code", $stats["config"]);
 
-        $dir = $stats['templatesDir'];
+        $dir = $stats['templatesDir'].'/';
 
         $this->assertTrue(is_dir($dir."some-directory"), $dir);
         $this->assertTrue(is_file($dir."some-directory/my.twig.exclude"));
@@ -19,7 +19,7 @@ class GiftorTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue(is_file($dir."stuff.txt"));
         $this->assertTrue(is_file($dir."test.txt.twig"));
 
-        $dir = $stats['giftsDir'];
+        $dir = $stats['giftsDir'].'/';
 
         $this->assertTrue(is_dir($dir."some-directory"));
         $this->assertTrue(is_file($dir."some-directory/my.twig"));
