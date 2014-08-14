@@ -46,7 +46,6 @@ class Giftor extends AbstractDirectoryAttr
 
         foreach ($this->paths["twigs"] as $path) {
             $tmpl = substr($path, strlen($this->giftsDir));
-            $tmpl = str_replace(' ', "\\ ", $tmpl);
 
             $template = $twig->loadTemplate($tmpl);                         // Get the template.
             $output   = $template->render($this->config->get("vars"));      // Get output of template with the variables ($vars).
