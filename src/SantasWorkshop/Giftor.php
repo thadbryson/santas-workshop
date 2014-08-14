@@ -13,6 +13,9 @@ class Giftor extends AbstractDirectoryAttr
     {
         $this->templatesDir = realpath($this->config->getTemplatesDir($templatesDir));
         $this->giftsDir     = realpath($this->config->getGiftsDir($this->getDir()));
+
+        $this->templatesDir = str_replace(' ', "\\ ", $this->templatesDir);
+        $this->giftsDir     = str_replace(' ', "\\ ", $this->giftsDir);
     }
 
     protected function copyTemplate()
@@ -43,6 +46,7 @@ class Giftor extends AbstractDirectoryAttr
 
         foreach ($this->paths["twigs"] as $path) {
             $tmpl = substr($path, strlen($this->giftsDir));
+            $tmpl = str_replace(' ', "\\ ", $tmpl);
 
             $template = $twig->loadTemplate($tmpl);                         // Get the template.
             $output   = $template->render($this->config->get("vars"));      // Get output of template with the variables ($vars).
