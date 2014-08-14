@@ -22,6 +22,10 @@ class Process
 
         $basename_new = substr($basename, 0, strlen($basename) - strlen($trim));
 
+        // Make sure we can handle filenames with spaces in it.
+        $basename     = str_replace(' ', "\\ ", $basename);
+        $basename_new = str_replace(' ', "\\ ", $basename_new);
+
         return static::execute("mv {$basename} {$basename_new}", $cwd);
     }
 }
