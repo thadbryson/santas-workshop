@@ -20,7 +20,7 @@ class Giftor extends AbstractDirectoryAttr
 
     protected function copyTemplate()
     {
-        return Process::execute("cp {$this->templatesDir}/* {$this->giftsDir} -r");
+        return Process::copy($this->templatesDir, $this->giftsDir);
     }
 
     protected function setPaths()

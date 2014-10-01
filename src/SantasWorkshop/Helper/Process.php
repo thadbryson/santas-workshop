@@ -4,7 +4,7 @@ namespace TCB\SantasWorkshop\Helper;
 
 class Process
 {
-    public static function execute($command, $cwd = null)
+    private static function execute($dir, $cwd = null)
     {
         if (strpos($command, "rm ") !== false) {
             throw new \Exception("Cannot call rm command from here. Must use eraseDir().");
@@ -13,6 +13,22 @@ class Process
         $process = new \Symfony\Component\Process\Process($command, $cwd);
 
         return $process->run();
+    }
+
+    public static function copy($copyFrom, $copyTo)
+    {
+        $copyFrom = rtrim($copyFrom, '/');
+        $copyTo   = rtrim($copyTo, '/');
+
+        if (!is_dir($copyFrom) || dirname(dirname($copyFrom)) != '/') {
+            throw new \Exception('No from directory: '.$copyFrom);
+        }
+
+        if (!is_dir($copyTo) || dirname(dirname($copyTo)) != '/') {
+            throw new \Exception('No to directory: '.$copyTo);
+        }
+
+        return static::execute("cp {$copyFrom}/* {$copyTo}/");
     }
 
     public static function rename($path, $trim)
