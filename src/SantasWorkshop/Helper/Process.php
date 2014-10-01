@@ -20,11 +20,11 @@ class Process
         $copyFrom = rtrim($copyFrom, '/');
         $copyTo   = rtrim($copyTo, '/');
 
-        if (!is_dir($copyFrom) || dirname(dirname($copyFrom)) != '/') {
+        if (!is_dir($copyFrom) || substr_count($copyFrom, DIRECTORY_SEPARATOR) <= 1) {
             throw new \Exception('No from directory: '.$copyFrom);
         }
 
-        if (!is_dir($copyTo) || dirname(dirname($copyTo)) != '/') {
+        if (!is_dir($copyTo) || substr_count($copyTo, DIRECTORY_SEPARATOR) <= 1) {
             throw new \Exception('No to directory: '.$copyTo);
         }
 
