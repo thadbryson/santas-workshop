@@ -4,7 +4,7 @@ namespace TCB\SantasWorkshop\Helper;
 
 class Process
 {
-    private static function execute($dir, $cwd = null)
+    private static function execute($command, $cwd = null)
     {
         if (strpos($command, "rm ") !== false) {
             throw new \Exception("Cannot call rm command from here. Must use eraseDir().");
@@ -28,7 +28,7 @@ class Process
             throw new \Exception('No to directory: '.$copyTo);
         }
 
-        return static::execute("cp {$copyFrom}/* {$copyTo}/");
+        return static::execute("cp {$copyFrom}/* {$copyTo}/ -r");
     }
 
     public static function rename($path, $trim)
