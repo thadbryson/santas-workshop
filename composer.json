@@ -17,11 +17,10 @@
     "minimum-stability": "stable",
 
     "require": {
-        "php":              ">=5.3.0",
-        "symfony/console":  "2.6.*",
-        "symfony/finder":   "2.6.*",
-        "symfony/process":  "2.6.*",
-        "twig/twig":        "1.18.*"
+        "php":                ">=5.3.0",
+        "symfony/finder":     "2.6.*",
+        "symfony/filesystem": "2.6.*",
+        "twig/twig":          "1.18.*"
     },
 
     "require-dev": {
@@ -30,7 +29,7 @@
 
     "autoload": {
         "psr-4": {
-            "TCB\\Santa": "src/"
+            "TCB\\SantasWorkshop\\": "src/"
         }
     }
 }
