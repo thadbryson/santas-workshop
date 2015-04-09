@@ -1,3 +1,11 @@
-/vendor/
-/composer.lock
+# Go here to help you with your gitignore files.
+# https://www.gitignore.io/
 
+# PHPUnit stuff to ignore.
+doc/
+
+# Composer files and directories
+vendor/
+composer.lock
+
+# Ignore any IDE files that are created.

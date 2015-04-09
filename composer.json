@@ -1,15 +1,20 @@
 {
-    "name": "thadbryson/santas-workshop",
-    "description": "Generate code from Twig templates. Or any files for that matter.",
-    "minimum-stability": "stable",
-
+    "name":         "thadbryson/santas-workshop",
+    "description":  "Generate directories and files with content. Actual file content. Real text and data. Spreadsheets, PHP code, Javascript, HTML, and whatever.",
+    "keywords":     ["library"],
+    "license":      "MIT",
+    "type":         "library",
+    "homepage":     "http://thadbryson.co/projects/santas-workshop",
     "authors": [
         {
             "name":     "Thad Bryson",
             "email":    "thadbry@gmail.com",
-            "homepage": "http://thadbryson.co"
+            "homepage": "http://thadbryson.co",
+            "role":     "Author"
         }
     ],
+
+    "minimum-stability": "stable",
 
     "require": {
         "php":              ">=5.3.0",
@@ -17,6 +22,10 @@
         "symfony/finder":   "2.6.*",
         "symfony/process":  "2.6.*",
         "twig/twig":        "1.18.*"
+    },
+
+    "require-dev": {
+
     },
 
     "autoload": {
