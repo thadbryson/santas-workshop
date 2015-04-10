@@ -2,6 +2,7 @@
 
 namespace TCB\SantasWorkshop;
 
+use TCB\SantasWorkshop\AbstractRenderingEngine;
 use TCB\SantasWorkshop\RenderingEngine\Twig;
 
 use Symfony\Component\Filesystem\Filesystem;
